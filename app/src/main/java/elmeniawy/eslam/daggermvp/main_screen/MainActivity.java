@@ -50,14 +50,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @Override
     @OnClick(R.id.btSearch)
     public void onSearchButtonClicked() {
-        if (!etSearchText.getText().toString().isEmpty()) {
-            presenter.loadResults(etSearchText.getText().toString());
-        }
+        presenter.loadResults(etSearchText.getText().toString());
     }
 
     @Override
     public void displayResults(List<String> titles, List<String> images) {
-        Timber.d("titles: %s\nimages:%s", titles.toString(), images.toString());
+        Timber.d("titles: %s\nimages: %s", titles.toString(), images.toString());
     }
 
     @Override

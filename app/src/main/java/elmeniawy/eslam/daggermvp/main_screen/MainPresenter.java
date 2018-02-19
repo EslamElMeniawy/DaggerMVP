@@ -41,7 +41,13 @@ public class MainPresenter extends BasePresenter<MainContract.MainView>
 
     @Override
     public void loadResults(String title) {
-        loadResults(loadResultsUseCase.execute(title));
+        if (title.trim().isEmpty()) {
+            view.showResults(false);
+            view.displayErrorMessage("Enter search text first");
+            view.showError(true);
+        } else {
+            loadResults(loadResultsUseCase.execute(title));
+        }
     }
 
     private void loadResults(Observable<SearchResponse> resultsObservable) {
