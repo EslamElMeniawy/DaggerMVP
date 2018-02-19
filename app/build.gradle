@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+project.ext {
+    supportVersion = "27.0.2"
+    daggerVersion = "2.14.1"
+    butterKnifeVersion = "8.8.1"
+    rxJavaVersion = "2.1.9"
+    rxAndroidVersion = "2.0.2"
+    rxRelayVersion = "2.0.0"
+    timberVersion = "4.6.1"
+    retrofitVersion = "2.3.0"
+    picassoVersion = "2.5.2"
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "elmeniawy.eslam.daggermvp"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // External jars
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Support library
+    implementation "com.android.support:appcompat-v7:$project.supportVersion"
+    implementation "com.android.support:support-v4:$project.supportVersion"
+    implementation "com.android.support:recyclerview-v7:$project.supportVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Test libraries
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:$project.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterKnifeVersion"
+
+    // ReactiveX
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+
+    // RxRelay
+    implementation "com.jakewharton.rxrelay2:rxrelay:$project.rxRelayVersion"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$project.timberVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$project.retrofitVersion"
+
+    // Picasso.
+    implementation "com.squareup.picasso:picasso:$project.picassoVersion"
+}
