@@ -16,7 +16,7 @@ import elmeniawy.eslam.daggermvp.main_screen.MainViewModule;
  */
 
 @Module
-public abstract class BuildersModule {
+abstract class BuildersModule {
    @ContributesAndroidInjector(modules = {MainViewModule.class, MainModule.class})
     abstract MainActivity bindMainActivity();
 

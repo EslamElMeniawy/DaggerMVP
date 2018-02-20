@@ -18,7 +18,7 @@ import elmeniawy.eslam.daggermvp.App;
  */
 
 @Module
-public class AppModule {
+class AppModule {
     @Provides
     Context provideContext(App application) {
         return application.getApplicationContext();

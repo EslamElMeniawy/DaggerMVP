@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 import elmeniawy.eslam.daggermvp.R;
+import elmeniawy.eslam.daggermvp.movies_list.MoviesListFragment;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @BindView(R.id.progressBar)
     ProgressBar loadingIndicator;
 
+    private MoviesListFragment moviesListFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Timber.tag(MainActivity.class.getSimpleName());
+        moviesListFragment = (MoviesListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
     }
 
     @Override
@@ -56,11 +60,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @Override
     public void displayResults(List<String> titles, List<String> images) {
         Timber.d("titles: %s\nimages: %s", titles.toString(), images.toString());
+        moviesListFragment.setData(titles, images);
     }
 
     @Override
     public void showResults(boolean show) {
-
+        moviesListFragment.showRecycler(show);
     }
 
     @Override

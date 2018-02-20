@@ -12,7 +12,7 @@ import io.reactivex.Observable;
  * CITC - Mansoura University
  */
 
-public class MainRepository {
+class MainRepository {
     Observable<SearchResponse> getResults(String title) {
         return ApiClient.getClient().create(ApiInterface.class).searchMovies(title);
     }
